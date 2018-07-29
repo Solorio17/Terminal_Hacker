@@ -186,6 +186,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1867264780 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1744407292189834, guid: c46548f7b668a78409fa399c095e4e6b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2121117110}
+--- !u!114 &1867264782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867264780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6d3c3c95d3b854d8d1eee76bdcc6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2121117110
 Prefab:
   m_ObjectHideFlags: 0
@@ -224,6 +240,21 @@ Prefab:
     - target: {fileID: 4027389112089032, guid: c46548f7b668a78409fa399c095e4e6b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399372335518172, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: charactersWide
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114800869134824038, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114800869134824038, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c46548f7b668a78409fa399c095e4e6b, type: 2}
