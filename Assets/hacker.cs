@@ -39,6 +39,14 @@ public class hacker : MonoBehaviour {
         {
             Terminal.WriteLine("You have chosen 02_c0lOrAd0 P0wEr gRid");
         }
+        else if(input == "03")
+        {
+            Terminal.WriteLine("You have chosen 03__nAti0NaL aEr0NauTICs & SpAC3 aDmInIsTr4Ti0n");
+        }
+        else
+        {
+            Terminal.WriteLine("Please choose a valid option in the form of '01, 02 or 03'");
+        }
     }
     
     // Update is called once per frame
