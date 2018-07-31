@@ -9,6 +9,10 @@ public class hacker : MonoBehaviour {
     string levelMessage;
     enum Screen { MainMenu, Password, WinScreen};
     Screen currentScreen = Screen.MainMenu;
+    string levelPassword;
+
+    string[] LevelOnePasswords = new string[] { "students", "teachers", "homework", "utensils", "projects" };
+    string[] LevelTwoPasswords = new string[] { "electricity", "security", "powering", "personnel", "gridsystem" };
 
     // Use this for initialization
     void Start () {
@@ -32,22 +36,37 @@ public class hacker : MonoBehaviour {
 
     void OnUserInput(string input)
     {
-        Terminal.ClearScreen();
         if (input == "menu".ToLower())
         {
+            Terminal.ClearScreen();
+            currentScreen = Screen.MainMenu;
             ShowMainMenu();
         }
-        else if(input == "01")
+        else if (currentScreen == Screen.MainMenu)
         {
+            RunMainMenu(input);
+        }
+        else if(currentScreen == Screen.Password)
+        {
+            CheckPassword(input);
+        }
+    }
+
+    void RunMainMenu(string input)
+    {
+        if (input == "01")
+        {
+            levelPassword = "not a high school";
             levelMessage = "01_l0cAl H1gH ScH0oL";
             StartGame();
         }
-        else if(input == "02")
+        else if (input == "02")
         {
+            levelPassword = "im a grid system";
             levelMessage = "02_c0lOrAd0 P0wEr gRid";
             StartGame();
         }
-        else if(input == "03")
+        else if (input == "03")
         {
             Terminal.WriteLine("You have chosen 03__nAti0NaL aEr0NauTICs & SpAC3 aDmInIsTr4Ti0n");
         }
@@ -60,8 +79,21 @@ public class hacker : MonoBehaviour {
     void StartGame()
     {
         currentScreen = Screen.Password;
+        Terminal.ClearScreen();
         Terminal.WriteLine("You have chosen " + levelMessage);
         Terminal.WriteLine("Now enter the secret password: ");
+    }
+
+    void CheckPassword(string password)
+    {
+        if(password == levelPassword)
+        {
+            Terminal.WriteLine("Correct!");
+        }
+        else
+        {
+            Terminal.WriteLine("Wrong!");
+        }
     }
 
     // Update is called once per frame

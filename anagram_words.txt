@@ -1,0 +1,11 @@
+01
+
+students, teachers, utensils, homework, projects
+
+02
+
+electricity, security, powering, personnel, gridsystem
+
+03
+
+astronauts, rocketships, mathemathics, science, engineers
