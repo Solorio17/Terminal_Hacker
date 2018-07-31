@@ -1,8 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class hacker : MonoBehaviour {
+
+    //Game State
+    string levelMessage;
+    enum Screen { MainMenu, Password, WinScreen};
+    Screen currentScreen = Screen.MainMenu;
 
     // Use this for initialization
     void Start () {
@@ -33,11 +39,13 @@ public class hacker : MonoBehaviour {
         }
         else if(input == "01")
         {
-            Terminal.WriteLine("You have chosen 01_l0cAl H1gH ScH0oL");
+            levelMessage = "01_l0cAl H1gH ScH0oL";
+            StartGame();
         }
         else if(input == "02")
         {
-            Terminal.WriteLine("You have chosen 02_c0lOrAd0 P0wEr gRid");
+            levelMessage = "02_c0lOrAd0 P0wEr gRid";
+            StartGame();
         }
         else if(input == "03")
         {
@@ -48,7 +56,14 @@ public class hacker : MonoBehaviour {
             Terminal.WriteLine("Please choose a valid option in the form of '01, 02 or 03'");
         }
     }
-    
+
+    void StartGame()
+    {
+        currentScreen = Screen.Password;
+        Terminal.WriteLine("You have chosen " + levelMessage);
+        Terminal.WriteLine("Now enter the secret password: ");
+    }
+
     // Update is called once per frame
     void Update () {
         
