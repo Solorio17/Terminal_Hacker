@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class hacker : MonoBehaviour {
 
     //Game State
-    string levelMessage;
+    int level;
     enum Screen { MainMenu, Password, WinScreen};
     Screen currentScreen = Screen.MainMenu;
     string levelPassword;
@@ -52,23 +49,13 @@ public class hacker : MonoBehaviour {
         }
     }
 
-    void RunMainMenu(string input)
+    void RunMainMenu(string menuInput)
     {
-        if (input == "01")
+        bool isValidLevelNumber = (menuInput == "01" || menuInput == "02");
+        if (isValidLevelNumber)
         {
-            levelPassword = "not a high school";
-            levelMessage = "01_l0cAl H1gH ScH0oL";
+            level = int.Parse(menuInput);
             StartGame();
-        }
-        else if (input == "02")
-        {
-            levelPassword = "im a grid system";
-            levelMessage = "02_c0lOrAd0 P0wEr gRid";
-            StartGame();
-        }
-        else if (input == "03")
-        {
-            Terminal.WriteLine("You have chosen 03__nAti0NaL aEr0NauTICs & SpAC3 aDmInIsTr4Ti0n");
         }
         else
         {
@@ -80,13 +67,26 @@ public class hacker : MonoBehaviour {
     {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
-        Terminal.WriteLine("You have chosen " + levelMessage);
+        switch (level)
+        {
+            case 1:
+                levelPassword = LevelOnePasswords[Random.Range(0, LevelOnePasswords.Length)];
+                break;
+            case 2:
+                levelPassword = LevelTwoPasswords[Random.Range(0, LevelTwoPasswords.Length)];
+                break;
+            default:
+                Debug.LogError("Invalid");
+                break;
+
+        }
+        Terminal.WriteLine("You have chosen " + level);
         Terminal.WriteLine("Now enter the secret password: ");
     }
 
-    void CheckPassword(string password)
+    void CheckPassword(string enteredPassword)
     {
-        if(password == levelPassword)
+        if(enteredPassword == levelPassword)
         {
             Terminal.WriteLine("Correct!");
         }
