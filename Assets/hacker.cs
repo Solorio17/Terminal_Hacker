@@ -8,22 +8,24 @@ public class hacker : MonoBehaviour {
     Screen currentScreen = Screen.MainMenu;
     string levelPassword;
 
+    string menuReminder = "You may type 'menu' at any time to return to the main menu!";
     string[] LevelOnePasswords = new string[] { "students", "teachers", "homework", "utensils", "projects" };
     string[] LevelTwoPasswords = new string[] { "electricity", "security", "powering", "personnel", "gridsystem" };
 
-    // Use this for initialization
     void Start () {
         ShowMainMenu();
     }
 
     void ShowMainMenu()
     {
-        Terminal.WriteLine("Welcome Agent");
+        Terminal.WriteLine("                   Welcome Agent");
         Terminal.WriteLine("Your mission should you choose to accept it is to hack one of these locations and retrieve the secret data.");
         Terminal.WriteLine(" ");
         Terminal.WriteLine("01_l0cAl H1gH ScH0oL");
         Terminal.WriteLine("02_c0lOrAd0 P0wEr gRid");
         Terminal.WriteLine("03__nAti0NaL aEr0NauTICs & SpAC3 aDmInIsTr4Ti0n");
+        Terminal.WriteLine(" ");
+        Terminal.WriteLine(menuReminder);
         Terminal.WriteLine(" ");
         Terminal.WriteLine("What do you choose?");
 
@@ -55,7 +57,7 @@ public class hacker : MonoBehaviour {
         if (isValidLevelNumber)
         {
             level = int.Parse(menuInput);
-            StartGame();
+            AskForPassword();
         }
         else
         {
@@ -63,10 +65,17 @@ public class hacker : MonoBehaviour {
         }
     }
 
-    void StartGame()
+    void AskForPassword()
     {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
+        SetRandomPassword();
+        Terminal.WriteLine("You have chosen " + level);
+        Terminal.WriteLine("Enter the secret password, Hint: " + levelPassword.Anagram());
+    }
+
+    void SetRandomPassword()
+    {
         switch (level)
         {
             case 1:
@@ -80,8 +89,6 @@ public class hacker : MonoBehaviour {
                 break;
 
         }
-        Terminal.WriteLine("You have chosen " + level);
-        Terminal.WriteLine("Enter the secret password, Hint: " + levelPassword.Anagram());
     }
 
     void CheckPassword(string enteredPassword)
@@ -92,7 +99,7 @@ public class hacker : MonoBehaviour {
         }
         else
         {
-            Terminal.WriteLine("Wrong!");
+            AskForPassword();
         }
     }
 
