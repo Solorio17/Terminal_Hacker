@@ -9,6 +9,7 @@ public class hacker : MonoBehaviour {
     string levelPassword;
 
     string menuReminder = "You may type 'menu' at any time to return to the main menu!";
+    //Arrays that hold the passwords for each level.
     string[] LevelOnePasswords = new string[] { "student", "teacher", "homework", "utensil", "project" };
     string[] LevelTwoPasswords = new string[] { "electricity", "security", "powering", "volts", "gridsystem" };
     string[] LevelThreePasswords = new string[] { "astronauts", "rocketships", "mathematics", "science", "engineers" };
@@ -17,6 +18,7 @@ public class hacker : MonoBehaviour {
         ShowMainMenu();
     }
 
+    //Basically the main menu
     void ShowMainMenu()
     {
         Terminal.WriteLine("                   Welcome Agent");
@@ -32,8 +34,7 @@ public class hacker : MonoBehaviour {
 
     }
 
-
-
+    //Checks for the user input in any state of the game
     void OnUserInput(string input)
     {
         if (input == "menu".ToLower())
@@ -52,6 +53,7 @@ public class hacker : MonoBehaviour {
         }
     }
 
+    //Handles the user input, making sure its valid.
     void RunMainMenu(string menuInput)
     {
         bool isValidLevelNumber = (menuInput == "01" || menuInput == "02" || menuInput == "03");
@@ -66,6 +68,7 @@ public class hacker : MonoBehaviour {
         }
     }
 
+    //Changes the current screen to password, and has the anagram feature for the password hint
     void AskForPassword()
     {
         currentScreen = Screen.Password;
@@ -75,6 +78,7 @@ public class hacker : MonoBehaviour {
         Terminal.WriteLine("Enter the secret password, Hint: " + levelPassword.Anagram());
     }
 
+    //Makes sure to choose a random from the password arrays, depending on what level is chosen.
     void SetRandomPassword()
     {
         switch (level)
@@ -95,6 +99,7 @@ public class hacker : MonoBehaviour {
         }
     }
 
+    //Checks for password match. If correct display win screen, its incorrect run askForPassword.
     void CheckPassword(string enteredPassword)
     {
         if(enteredPassword == levelPassword)
@@ -107,12 +112,14 @@ public class hacker : MonoBehaviour {
         }
     }
 
+    //Handles displaying the win screen.
    void DisplayWinScreen()
     {
         currentScreen = Screen.WinScreen;
         ShowLevelReward();
     }
 
+    //After entering correct password for the level, makes sure to display the ascii art for that level
    void ShowLevelReward()
     {
         switch (level)
@@ -170,7 +177,6 @@ public class hacker : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update () {
         
     }
