@@ -75,6 +75,12 @@ public class hacker : MonoBehaviour {
         Terminal.ClearScreen();
         SetRandomPassword();
         Terminal.WriteLine("You have chosen " + level);
+        setAnagram();
+    }
+
+    //Split it into a new method, so that it can be called when the password is incorrect
+    private void setAnagram()
+    {
         Terminal.WriteLine("Enter the secret password, Hint: " + levelPassword.Anagram());
     }
 
@@ -108,7 +114,8 @@ public class hacker : MonoBehaviour {
         }
         else
         {
-            AskForPassword();
+            Terminal.WriteLine("Wrong Password, Try Again!");
+            setAnagram();
         }
     }
 
@@ -165,10 +172,11 @@ public class hacker : MonoBehaviour {
                 Terminal.ClearScreen();
                 Terminal.WriteLine(@"
                 
+          Welcome to NASA's Internal System
   ******    __________________________
         ** |\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     ****** | __   __   __   __   __    \\\\
-       *** |(__) (__) (__) (__) (__) Welcome to NASA!
+       *** |(__) (__) (__) (__) (__)   0======---
     ****** |                           ////
         ** |__________________________///
   *****
