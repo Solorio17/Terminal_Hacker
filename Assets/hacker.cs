@@ -81,18 +81,70 @@ public class hacker : MonoBehaviour {
 
         }
         Terminal.WriteLine("You have chosen " + level);
-        Terminal.WriteLine("Now enter the secret password: ");
+        Terminal.WriteLine("Enter the secret password, Hint: " + levelPassword.Anagram());
     }
 
     void CheckPassword(string enteredPassword)
     {
         if(enteredPassword == levelPassword)
         {
-            Terminal.WriteLine("Correct!");
+            DisplayWinScreen();
         }
         else
         {
             Terminal.WriteLine("Wrong!");
+        }
+    }
+
+   void DisplayWinScreen()
+    {
+        currentScreen = Screen.WinScreen;
+        ShowLevelReward();
+    }
+
+   void ShowLevelReward()
+    {
+        switch (level)
+        {
+            case 1:
+                Terminal.WriteLine("You did it...");
+                Terminal.ClearScreen(); 
+                Terminal.WriteLine(@"
+                        You're In!
+                     ______________
+                    / ~~~~~ ~~~~~ /
+                   / ~~~~~~~~~~~ //
+                  / ~~~~ ~~~~~~ //
+                 / ~~~~~~~~~~~ //
+                / ~~~ ~~~ ~~~ //
+               / ~~~~~~~~~~~ //
+              / ~~~ ~~~~~ ~ //
+             /_____________//
+             |____________|/
+");
+                break;
+
+            case 2:
+                Terminal.WriteLine("You did it...");
+                Terminal.ClearScreen();
+                Terminal.WriteLine(@"
+                   
+                You \\\\\ Buzzed In!
+                     \\\\\
+                      \\\\\
+                     \\\\\\\ 
+                      \\\\\
+                       \\\\\
+                        \\\\\
+                       \\\\\\\
+                        \\\\
+                         \\\
+                          \\
+                           \\
+                            \
+                             \   
+ ");
+                break;
         }
     }
 
