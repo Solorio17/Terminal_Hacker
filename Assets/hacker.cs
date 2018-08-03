@@ -9,8 +9,9 @@ public class hacker : MonoBehaviour {
     string levelPassword;
 
     string menuReminder = "You may type 'menu' at any time to return to the main menu!";
-    string[] LevelOnePasswords = new string[] { "students", "teachers", "homework", "utensils", "projects" };
-    string[] LevelTwoPasswords = new string[] { "electricity", "security", "powering", "personnel", "gridsystem" };
+    string[] LevelOnePasswords = new string[] { "student", "teacher", "homework", "utensil", "project" };
+    string[] LevelTwoPasswords = new string[] { "electricity", "security", "powering", "volts", "gridsystem" };
+    string[] LevelThreePasswords = new string[] { "astronauts", "rocketships", "mathematics", "science", "engineers" };
 
     void Start () {
         ShowMainMenu();
@@ -53,7 +54,7 @@ public class hacker : MonoBehaviour {
 
     void RunMainMenu(string menuInput)
     {
-        bool isValidLevelNumber = (menuInput == "01" || menuInput == "02");
+        bool isValidLevelNumber = (menuInput == "01" || menuInput == "02" || menuInput == "03");
         if (isValidLevelNumber)
         {
             level = int.Parse(menuInput);
@@ -83,6 +84,9 @@ public class hacker : MonoBehaviour {
                 break;
             case 2:
                 levelPassword = LevelTwoPasswords[Random.Range(0, LevelTwoPasswords.Length)];
+                break;
+            case 3:
+                levelPassword = LevelThreePasswords[Random.Range(0, LevelThreePasswords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid");
@@ -114,7 +118,6 @@ public class hacker : MonoBehaviour {
         switch (level)
         {
             case 1:
-                Terminal.WriteLine("You did it...");
                 Terminal.ClearScreen(); 
                 Terminal.WriteLine(@"
                         You're In!
@@ -132,7 +135,6 @@ public class hacker : MonoBehaviour {
                 break;
 
             case 2:
-                Terminal.WriteLine("You did it...");
                 Terminal.ClearScreen();
                 Terminal.WriteLine(@"
                    
@@ -150,6 +152,19 @@ public class hacker : MonoBehaviour {
                            \\
                             \
                              \   
+ ");
+                break;
+            case 3:
+                Terminal.ClearScreen();
+                Terminal.WriteLine(@"
+                
+  ******    __________________________
+        ** |\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ****** | __   __   __   __   __    \\\\
+       *** |(__) (__) (__) (__) (__) Welcome to NASA!
+    ****** |                           ////
+        ** |__________________________///
+  *****
  ");
                 break;
         }
